@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <p>
+        <form id="form" action="/user/update" method="post">
+            사용자 정보 수정<br>
+            <input type="password" name="password" placeholder="Password" value="{{user.password}}"/><br>
+            <input type="text" name="name" placeholder="Name" value="{{user.name}}" /><br>
+            <input type="text" name="age" placeholder="Age" value="{{user.age}}"/><br>
+            <select name="gender">
+                <option value="male" selected>남성</option>
+                <option value="female">여성</option>
+            </select><br>
+            <button type="submit">전송</button>
+        </form>
+    </p>
+
+    <p>
+        사용자 정보 삭제<br>
+        <a href="http://localhost:{{port}}/user/delete/{{user.id}}">http://localhost:{{port}}/user/delete/{{user.id}}</a><br>
+    </p>
+    
+    <!--<p>
+        사용자 포스트 정보<br>
+        {% for userId in users %}
+            <a href="http://localhost:{{port}}/user/{{userId}}/comments">http://localhost:{{port}}/user/{{userId}}/comments</a><br>
+        {% endfor %}
+    </p>-->
+
+    <p>
+        사용자 정보<br>
+        <a href="http://localhost:{{port}}/user/{{user.id}}">http://localhost:{{port}}/user/{{user.id}}</a><br>
+    </p>
+            
+{% endblock %}

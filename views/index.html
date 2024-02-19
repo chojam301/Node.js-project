@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<p>
+    {% if user %}
+        {{user.name}}님 환영합니다!<br>
+        
+        <h2>상품 구매</h2>
+        <p>
+            <a href="/basket">상품 구매</a>
+        </p>
+        <p>
+            <a href="/order">주문하기</a>
+        </p>
+        <p>
+            <a href="/pay">결제하기</a>
+        </p>
+
+    {% else %}
+        <p>
+            <form id="form" action="auth/login" method="post">
+                <input type="text" name="id" placeholder="ID" /><br>
+                <input type="password" name="password" placeholder="Password" /><br>
+                <button type="submit">로그인</button>
+            </form>
+        </p>
+    {% endif %}
+</p>
+{% endblock %}
+
+

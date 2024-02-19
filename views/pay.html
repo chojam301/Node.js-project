@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}  
+    <p>
+        <form id="form" action="/pay/charge" method="post">
+        포인트 충전<br>
+        <input type="text" name="points" placeholder="Point" /><br>
+        <button type="submit">전송</button>
+        </form>
+    </p>
+
+    <a href="/pay/payment">결제 하기</a>
+
+{% endblock %}

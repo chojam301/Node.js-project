@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<p>
+        <h2>주문 하기</h2>
+        <p>
+            <form id="form" action="" method="post">
+                <table>
+                    <tr>
+                        <th>장바구니 번호&nbsp;</th>
+                        <th>상품아이디&nbsp;</th>
+                        <th>수량&nbsp;</th>
+                        <th>총 가격&nbsp;</th>
+                    </tr>
+                    {% for data in baskets %}
+                        <tr>
+                            <td>{{data.dataValues.basketId}}</td>
+                            <td>{{data.dataValues.itemId}}</td>
+                            <td>{{data.dataValues.itemCount}}</td>
+                            <td>{{data.dataValues.totalPrice}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <select name="basketId">
+                    {% for data in baskets %}
+                    <option value="{{data.dataValues.basketId}}">{{data.dataValues.basketId}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">주문 취소</button>          
+            </form>
+
+            <p>
+                <a href="/order/decision">모두 주문하기</a>
+            </p>
+        </p>
+        <p>
+            <a href="/order/{{user.id}}">내 주문 목록</a><br>
+        </p>
+        
+</p>
+{% endblock %}

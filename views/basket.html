@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<p>
+        <h2>상품 구매</h2>
+        <p>
+            <form id="form" action="" method="post">
+                <table>
+                    <tr>
+                        <th>상품명&nbsp;</th>
+                        <th>잔여수량&nbsp;</th>
+                    </tr>
+                    {% for data in items %}
+                        <tr>
+                            <td>{{data.dataValues.itemName}}</td>
+                            <td>{{data.dataValues.itemCount}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                <select name="itemName">
+                    {% for data in items %}
+                    <option value="{{data.dataValues.itemName}}">{{data.dataValues.itemName}}</option>
+                    {% endfor %}
+                </select><br>
+                <input type="number" name="itemCount" placeholder="0" />
+                <button id="basket" type="submit">장바구니</button>
+            </form>
+        </p>
+
+        <p>
+            <a href="/basket/{{user.id}}">내 장바구니 목록</a><br>
+        </p>
+</p>
+{% endblock %}

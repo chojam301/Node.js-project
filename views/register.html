@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <p>
+        <form id="form" action="" method="post">
+            회원가입<br>
+            <input type="text" name="id" placeholder="ID" /><br>
+            <input type="password" name="password" placeholder="Password" /><br>
+            <input type="text" name="name" placeholder="Name" /><br>
+            <input type="text" name="age" placeholder="Age" /><br>
+            <select name="gender">
+                <option value="male" selected>남성</option>
+                <option value="female">여성</option>
+            </select><br>
+            
+            <button type="submit">전송</button>
+        </form>
+        
+        <br>
+    </p>
+    
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if isAdded %}
+<script>
+    alert('추가 되었습니다')
+</script>
+{% elif isDeleted %}
+<script>
+    alert('삭제 되었습니다.')
+</script>
+{% endif %}
+    
+    <h2>물품관리페이지</h2>
+    <p>
+        <table>
+            <tr>
+                <th>상품아이디&nbsp;</th>
+                <th>상품명&nbsp;</th>
+                <th>잔여수량&nbsp;</th>
+                <th>상품가격&nbsp;</th>
+            </tr>
+            {% for data in items %}
+                <tr>
+                    <td>{{data.dataValues.itemIds}}</td>
+                    <td>{{data.dataValues.itemName}}</td>
+                    <td>{{data.dataValues.itemCount}}</td>
+                    <td>{{data.dataValues.itemPrice}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </p>
+    <p>
+        <form id="form" action="/product/add" method="post">
+            물품 추가<br>
+            <input type="text" name="itemIds" placeholder="ItemID" /><br>
+            <input type="text" name="itemName" placeholder="물품이름" /><br>
+            <input type="text" name="itemCount" placeholder="수량" /><br>
+            <input type="text" name="itemPrice" placeholder="가격" /><br>
+            
+            <button type="submit">추가</button>
+        </form>
+        
+        <br>
+    </p>
+
+    <p>
+        <form id="form" action="/product/modify" method="post">
+            물품 정보 수정<br>
+            <input type="text" name="itemIds" placeholder="ItemID" /><br>
+            <input type="text" name="itemName" placeholder="물품이름" /><br>
+            <input type="text" name="itemCount" placeholder="수량" /><br>
+            <input type="text" name="itemPrice" placeholder="가격" /><br>
+    
+            <button type="submit">수정</button>
+        </form>
+    </p>
+
+    <p>
+        <form id="form" action="/product/delete" method="post">
+            물품 삭제<br>
+            <input type="text" name="itemIds" placeholder="ItemID" /><br>
+            
+            <button type="submit">삭제</button>
+        </form>
+    </p>
+{% endblock %}
